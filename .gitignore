@@ -1,0 +1,45 @@
+## .NET build artifacts
+bin/
+obj/
+out/
+publish/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Visual Studio / Rider / VS Code
+.vs/
+.idea/
+*.swp
+
+## Test results
+[Tt]est[Rr]esult*/
+[Dd]ebugPS/
+*.trx
+
+## NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+*.nuget.props
+*.nuget.targets
+
+## Database files (SQLite)
+*.db
+*.db-shm
+*.db-wal
+
+## Logs
+*.log
+logs/
+
+## OS files
+.DS_Store
+Thumbs.db
+
+## Environment / secrets
+.env
+appsettings.*.Local.json

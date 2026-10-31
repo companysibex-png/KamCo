@@ -1,0 +1,74 @@
+@KamCo.Api_HostAddress = http://localhost:5000
+
+### Public: list products (search / filter / sort / paging)
+GET {{KamCo.Api_HostAddress}}/api/products?search=keyboard&sortBy=price_asc&page=1&pageSize=10
+Accept: application/json
+
+### Public: list categories
+GET {{KamCo.Api_HostAddress}}/api/categories
+Accept: application/json
+
+### Login as the seeded admin
+POST {{KamCo.Api_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@kamco.com",
+  "password": "Admin@123"
+}
+
+### Login as the seeded customer
+POST {{KamCo.Api_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "sara@kamco.com",
+  "password": "User@123"
+}
+
+### Register a new account
+POST {{KamCo.Api_HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Test User",
+  "email": "test@example.com",
+  "password": "Test@123"
+}
+
+### Admin: create a category (paste the login token below)
+# @name adminLogin
+POST {{KamCo.Api_HostAddress}}/api/categories
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Sports",
+  "description": "Sports gear and equipment"
+}
+
+### Customer: place an order (paste the login token below)
+POST {{KamCo.Api_HostAddress}}/api/orders
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "items": [
+    { "productId": 1, "quantity": 2 },
+    { "productId": 4, "quantity": 1 }
+  ]
+}
+
+### Customer: my orders
+GET {{KamCo.Api_HostAddress}}/api/orders/my
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Admin: update order status
+PATCH {{KamCo.Api_HostAddress}}/api/orders/1/status
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "status": "Paid"
+}
