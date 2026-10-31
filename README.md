@@ -1,8 +1,8 @@
 # KamCo Store API
 
-A clean, production-style **REST API for an e-commerce store**, built with **ASP.NET Core 8 (C#)**, **Entity Framework Core** and **SQLite**. It ships with JWT authentication, role-based authorization (Admin / User), Swagger docs and seeded demo data — clone, run, done.
+A clean, production-style **REST API for an e-commerce store**, built with **ASP.NET Core 10 (C#)**, **Entity Framework Core** and **SQLite**. It ships with JWT authentication, role-based authorization (Admin / User), Swagger docs and seeded demo data — clone, run, done.
 
-![.NET](https://img.shields.io/badge/.NET-8.0-512BD4) ![Database](https://img.shields.io/badge/DB-SQLite%20%2B%20EF%20Core-003B57) ![Auth](https://img.shields.io/badge/Auth-JWT%20%2B%20Roles-3DDC84) ![Tests](https://img.shields.io/badge/smoke%20tests-24%2F24%20pass-brightgreen)
+![.NET](https://img.shields.io/badge/.NET-10.0-512BD4) ![Database](https://img.shields.io/badge/DB-SQLite%20%2B%20EF%20Core-003B57) ![Auth](https://img.shields.io/badge/Auth-JWT%20%2B%20Roles-3DDC84) ![Tests](https://img.shields.io/badge/smoke%20tests-24%2F24%20pass-brightgreen)
 
 ## Features
 
@@ -16,10 +16,10 @@ A clean, production-style **REST API for an e-commerce store**, built with **ASP
 
 ## Quick start
 
-Prerequisites: [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) only — SQLite is bundled, no database server needed.
+Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) only — SQLite is bundled, no database server needed.
 
 ```bash
-git clone https://github.com/<YOUR-USERNAME>/KamCo.git
+git clone https://github.com/companysibex-png/KamCo.git
 cd KamCo/KamCo.Api
 dotnet run
 ```
