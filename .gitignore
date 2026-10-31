@@ -43,3 +43,6 @@ Thumbs.db
 ## Environment / secrets
 .env
 appsettings.*.Local.json
+
+## Local sales-report CSV output
+reports/

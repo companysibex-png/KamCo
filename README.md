@@ -119,20 +119,40 @@ KamCo/
 
 ## Testing
 
-A full smoke-test suite (24 checks: catalog, auth, role enforcement, order rules, delete flows) is included:
+**Integration tests (xUnit)** — 32 tests boot the real API in-memory with an isolated SQLite database (auth, roles, products/categories CRUD, order lifecycle, stock reservation, seed health):
+
+```bash
+dotnet test
+```
+
+A legacy smoke-test suite (24 checks against a running server) is also included:
 
 ```bash
 # start the API, then:
-bash ../scripts/smoke-test.sh   # prints PASS/FAIL per endpoint
+bash scripts/smoke-test.sh   # prints PASS/FAIL per endpoint
 ```
+
+## Sales report & local AI agents
+
+`scripts/sales-report.py` reads `kamco.db` **directly** (no server needed, Python stdlib only) and outputs a full sales report — KPIs, monthly revenue, top products/categories, cancellation rate, low-stock alerts — as JSON or CSV, ready for analysis:
+
+```bash
+python scripts/sales-report.py                    # JSON to stdout
+python scripts/sales-report.py --format csv       # CSV files into ./reports
+```
+
+On first run the seeder also generates **~110 demo orders across the last 4 months** (set `KAMCO_NO_DEMO_ORDERS=1` to skip), so the report has meaningful data right away.
+
+This is designed for local, free AI agents (Gemini CLI / Qwen Code) to run and analyze on your own machine — see the Persian guide **[docs/local-ai-fa.md](docs/local-ai-fa.md)** for setup steps and ready-to-use prompts.
 
 ## Roadmap ideas
 
+- [x] Integration tests with xUnit + SQLite in-memory (see [Testing](#testing))
 - [ ] Refresh tokens & logout
 - [ ] Pagination links in response headers
-- [ ] Unit tests with xUnit + EF Core InMemory
 - [ ] Dockerfile + docker-compose
 - [ ] Product images upload
+- [ ] `/api/reports/sales` endpoint exposing the sales report through the API (Admin)
 
 ## License
 
