@@ -28,7 +28,7 @@ public class SeedSalesHistoryTests(KamCoApiFactory factory) : ApiTestBase(factor
         var orders = await JsonAsync(await admin.GetAsync("/api/orders"));
 
         var statuses = orders.EnumerateArray()
-            .Select(o => o.GetProperty("status").GetString()).ToHashSet();
+            .Select(o => o.GetProperty("status").GetString()!).ToHashSet();
         Assert.Superset(
             new HashSet<string> { "Pending", "Paid", "Shipped", "Cancelled" },
             statuses);
